@@ -18,9 +18,13 @@ import {
 } from '@material-tailwind/react';
 import { FaSadTear, FaSlidersH } from 'react-icons/fa';
 
+import { DayPicker } from 'react-day-picker';
+import 'react-day-picker/dist/style.css';
+
 const RightNav = () => {
   const { events, isLoading, handleFilter, allEvents } =
     useContext(StateContext);
+
   const locations = allEvents.map(event =>
     Object.values(event.Location).join('')
   );
@@ -101,6 +105,7 @@ const RightNav = () => {
                     </MenuItem>
                   </MenuList>
                 </Menu>,
+
                 <Menu key={2343} placement="left-start">
                   <MenuHandler
                     className=" !block !bg-transparent !w-full !text-[#526175] !text-xl !normal-case  !shadow-none !p-0
@@ -112,9 +117,20 @@ const RightNav = () => {
                       </span>
                     </Button>
                   </MenuHandler>
-                  <MenuList className="!w-[500px]">
-                    <h2>Calender</h2>
-                  </MenuList>
+                  <MenuList
+                    children={[
+                      <DayPicker
+                        key={111111111100}
+                        mode="single"
+                        selected={new Date()}
+                        onSelect={data => {
+                          if (data) {
+                            handleFilter('date', data);
+                          }
+                        }}
+                      />,
+                    ]}
+                  ></MenuList>
                 </Menu>,
                 <MenuItem
                   key={234333}

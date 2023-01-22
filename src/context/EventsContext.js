@@ -2,12 +2,14 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { useState } from 'react';
 import { createContext } from 'react';
+import { format } from 'date-fns';
 
 export const StateContext = createContext({});
 
 const EventsContext = ({ children }) => {
   const [eventDetails, setEventDetails] = useState(null);
   const [events, setEvents] = useState([]);
+  const [selected, setSelected] = useState(new Date());
   const { data: allEvents = [], isLoading } = useQuery({
     queryKey: ['events'],
     queryFn: async () => {
@@ -33,6 +35,11 @@ const EventsContext = ({ children }) => {
       setEvents(eventByLocation);
       setEventDetails(eventByLocation[0]);
     }
+    if (filter.toLowerCase() === 'date') {
+      console.log(value);
+      // setEvents(allEvents);
+      // setEventDetails(allEvents[0]);
+    }
     if (filter.toLowerCase() === 'all') {
       setEvents(allEvents);
       setEventDetails(allEvents[0]);
@@ -45,6 +52,8 @@ const EventsContext = ({ children }) => {
     setEventDetails,
     handleFilter,
     allEvents,
+    selected,
+    setSelected,
   };
   return (
     <div>

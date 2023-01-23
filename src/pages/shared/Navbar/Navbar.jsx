@@ -15,7 +15,7 @@ const Navbar = () => {
         <div className="flex gap-x-[2px] md:gap-x-2 lg:gap-x-4 items-center">
           <div className="relative">
             <input
-              className="text-xs md:text-lg text-[#526175] font-semibold pl-6 md:pl-12 py-[6px] md:py-2 pr-2 md:pr-4  rounded-md md:rounded-xl focus:outline-1 focus:outline-[#3fc3d0] focus:outline-offset-1 bg-[#f1f0f3]"
+              className=" w-36 md:w-full text-xs md:text-lg text-[#526175] font-semibold pl-6 md:pl-12 py-[6px] md:py-2 pr-2 md:pr-4  rounded-md md:rounded-xl focus:outline-1 focus:outline-[#3fc3d0] focus:outline-offset-1 bg-[#f1f0f3]"
               type="text"
               name=""
               id=""
@@ -37,7 +37,7 @@ const Navbar = () => {
                 <SlUserFemale className="mr-1 text-md  md:text-2xl" />
                 {events.filter(event => event.Gender === 'Female').length > 0
                   ? events.filter(event => event.Gender === 'Female').length
-                  : 'NaN'}
+                  : '00'}
               </span>
             )}
           </div>
@@ -55,7 +55,7 @@ const Navbar = () => {
                 <SlUser className="mr-1 text-md  md:text-2xl" />
                 {events.filter(event => event.Gender === 'Male').length > 0
                   ? events.filter(event => event.Gender === 'Male').length
-                  : 'NaN'}
+                  : '00'}
               </span>
             )}
           </div>

@@ -147,7 +147,7 @@ const RightNav = () => {
       </div>
       <div>
         {events.length > 0 ? (
-          <div className="space-y-2 overflow-y-scroll h-[80vh]">
+          <div className="space-y-2 overflow-y-scroll h-[80vh] pb-8 lg:pb-3">
             {events.map((event, index) => (
               <EventCard eventItem={event} key={index}></EventCard>
             ))}

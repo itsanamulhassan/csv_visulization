@@ -21,7 +21,7 @@ const Home = () => {
     <section className="w-[90%] lg:w-[65%] text-[#526175]">
       {eventDetails ? (
         <div className="flex mt-8  flex-col-reverse lg:flex-row h-[90vh]  lg:h-full overflow-y-scroll lg:overflow-y-hidden ">
-          <div className="w-full lg:w-1/2 py-8 px-6 font-semibold my-8">
+          <div className="w-full lg:w-1/2 py-8 px-6 font-semibold mb-40 lg:mb-8">
             <p className="text-2xl font-bold">
               {eventDetails.ID ? eventDetails.ID : 'ID not found'}
             </p>

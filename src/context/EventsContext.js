@@ -2,7 +2,6 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { useState } from 'react';
 import { createContext } from 'react';
-import { format } from 'date-fns';
 import { db } from '../firebase/firebase.config';
 import { addDoc, collection, getDocs } from 'firebase/firestore';
 
@@ -15,12 +14,14 @@ const EventsContext = ({ children }) => {
   const { data: allEvents = [], isLoading } = useQuery({
     queryKey: ['events'],
     queryFn: async () => {
-      const data = await getDocs(eventsCollectionRef);
-      setEventDetails(data.docs.map(doc => ({ ...doc.data(), id: doc.id }))[0]);
-      setEvents(data.docs.map(doc => ({ ...doc.data(), id: doc.id })));
-      return data.docs.map(doc => ({ ...doc.data(), id: doc.id })).sort();
+      const res = await getDocs(eventsCollectionRef);
+      const data = res.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+      setEventDetails(data[0]);
+      setEvents(data);
+      return data;
     },
   });
+
   const handleAddEvent = async event => {
     await addDoc(eventsCollectionRef, {
       ID: event.ID,
@@ -42,18 +43,29 @@ const EventsContext = ({ children }) => {
       setEventDetails(eventByLocation[0]);
     }
     if (filter.toLowerCase() === 'gender') {
-      const eventByLocation = allEvents.filter(
+      const eventByGender = allEvents.filter(
         event => event.Gender.toLowerCase() === value.toLowerCase()
       );
-      setEvents(eventByLocation);
-      setEventDetails(eventByLocation[0]);
+      setEvents(eventByGender);
+      setEventDetails(eventByGender[0]);
     }
     if (filter.toLowerCase() === 'date') {
-      const month = value.toString().split(' ')[1].toLowerCase();
-      const date = +value.toString().split(' ')[2];
-      console.log(+value.toString().split(' ')[2]);
-      console.log(month, date);
-      // setEventDetails(allEvents[0]);
+      const date = `${+value.toString().split(' ')[2]}-${value
+        .toString()
+        .split(' ')[1]
+        .toLowerCase()}-${value
+        .toString()
+        .split(' ')[3]
+        .toLowerCase()
+        .split('')
+        .slice(-2)
+        .join('')
+        .toString()}`;
+      const eventByDate = allEvents.filter(
+        event => event.Date.toLowerCase() === date
+      );
+      setEvents(eventByDate);
+      setEventDetails(eventByDate[0]);
     }
     if (filter.toLowerCase() === 'all') {
       setEvents(allEvents);

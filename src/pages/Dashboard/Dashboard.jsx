@@ -8,7 +8,7 @@ const Dashboard = () => {
   return (
     <div>
       <Navbar></Navbar>
-      <div className="flex justify-between">
+      <div className="flex justify-between overflow-hidden">
         <LeftNav></LeftNav>
         <Home></Home>
         <RightNav></RightNav>

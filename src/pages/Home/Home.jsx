@@ -11,15 +11,17 @@ const Home = () => {
   // console.log(eventDetails);
   if (isLoading) {
     return (
-      <div className="w-[65%] flex items-center justify-center">Loading...</div>
+      <div className="w-[90%] lg:w-[65%] flex items-center justify-center">
+        <VscLoading className="text-6xl text-[#3fc3d0] animate-spin" />
+      </div>
     );
   }
 
   return (
-    <section className="w-[65%] text-[#526175]">
+    <section className="w-[90%] lg:w-[65%] text-[#526175]">
       {eventDetails ? (
-        <div className="flex mt-8">
-          <div className="w-1/2 py-8 px-6 font-semibold mt-8">
+        <div className="flex mt-8  flex-col-reverse lg:flex-row h-[90vh]  lg:h-full overflow-y-scroll lg:overflow-y-hidden ">
+          <div className="w-full lg:w-1/2 py-8 px-6 font-semibold my-8">
             <p className="text-2xl font-bold">
               {eventDetails.ID ? eventDetails.ID : 'ID not found'}
             </p>
@@ -89,14 +91,14 @@ const Home = () => {
               )}
             </p>
           </div>
-          <div className="w-1/2  p-4">
+          <div className="w-full lg:w-1/2  p-4">
             <p className="text-2xl font-bold my-2">
               {eventDetails.Gender ? eventDetails.Gender : 'Gender not found'}
             </p>
             <LazyLoadImage
               alt={eventDetails.Name ? eventDetails.Name : 'Name not found'}
               src={eventDetails.Image}
-              className="w-full rounded-xl border-4 border-[#3fc3d0] border-opacity-30"
+              className="w-full lg:w-[80%] rounded-xl border-4 border-[#3fc3d0] border-opacity-30"
             />
           </div>
         </div>
@@ -111,19 +113,3 @@ const Home = () => {
 };
 
 export default Home;
-
-/**
- * #3fc3d0
- * #a7aab4
- * #526175
- * #f1f0f3
- * #a5abb5
- * #fee9f0
- * #d8f3f5
- * #ffead3
- * #fe8b10
- * #f3f5f7
- * #08071c
- * #faf5ee
- *
- */

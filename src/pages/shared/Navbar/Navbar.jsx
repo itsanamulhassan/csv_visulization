@@ -7,10 +7,10 @@ import { StateContext } from '../../../context/EventsContext';
 import { VscLoading } from 'react-icons/vsc';
 
 const Navbar = () => {
-  const { events, isLoading } = useContext(StateContext);
+  const { events, isLoading, handleAddEvent } = useContext(StateContext);
   return (
     <nav className="bg-[#3fc3d0] text-white w-screen">
-      <div className=" w-[95%] mx-auto flex items-center justify-between h-[10vh]">
+      <div className="w-[97%] mx-auto flex items-center justify-between h-[10vh]">
         <img className="w-48" src={logo} alt="secquraise" />
         <div className="flex gap-x-4">
           <div className="relative">

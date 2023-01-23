@@ -24,7 +24,7 @@ const LeftNav = () => {
   };
   return (
     <aside className=" relative w-[5%] h-[90vh]">
-      <div className="flex flex-col justify-between h-full py-3 items-center rounded-r-2xl bg-[#faf5ee]">
+      <div className="flex flex-col justify-between h-full py-3 items-center rounded-r-2xl bg-[#faf5ee] border-r-4 border-[#d8f3f5]">
         <button onClick={toggleDrawer} className="text-black text-2xl">
           <FaBars className="text-[#3fc3d0]" />
         </button>

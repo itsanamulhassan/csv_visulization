@@ -3,13 +3,15 @@ import { useContext } from 'react';
 import { StateContext } from '../../../context/EventsContext';
 
 const EventCard = ({ eventItem }) => {
-  const { setEventDetails } = useContext(StateContext);
-  const { ID, Location, Date, Time } = eventItem;
+  const { setEventDetails, eventDetails } = useContext(StateContext);
+  const { ID, Location, Date, Time, id } = eventItem;
   // console.log(eventItem);
   return (
     <div
       onClick={() => setEventDetails(eventItem)}
-      className="bg-[#d8f3f5] duration-300 hover:bg-[#fee9f0] hover:cursor-pointer rounded-xl text-[#526175] px-3 py-4 font-semibold mx-2"
+      className={`${
+        eventDetails.id === id ? 'bg-[#fee9f0]' : ''
+      }duration-300 hover:bg-[#fee9f0] hover:cursor-pointer rounded-xl text-[#526175] px-3 py-4 font-semibold mx-2 bg-[#d8f3f5]`}
     >
       <div className="flex items-center justify-between">
         <div className="flex text-xl ">

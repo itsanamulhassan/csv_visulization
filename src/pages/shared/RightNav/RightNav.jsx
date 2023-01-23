@@ -40,7 +40,7 @@ const RightNav = () => {
     );
   }
   return (
-    <aside className="w-[30%] bg-[#faf5ee] px-3 rounded-l-2xl">
+    <aside className="w-[30%] bg-[#faf5ee] px-3 rounded-l-2xl border-l-4 border-[#d8f3f5]">
       <div>
         <div className="flex items-center justify-between">
           <h2 className="text-2xl font-semibold my-4"> Events</h2>
@@ -149,7 +149,7 @@ const RightNav = () => {
         </div>
         <div>
           {events.length > 0 ? (
-            <div className="space-y-3 overflow-y-scroll h-[85vh]">
+            <div className="space-y-3 overflow-y-scroll h-[80vh]">
               {events.map((event, index) => (
                 <EventCard eventItem={event} key={index}></EventCard>
               ))}
